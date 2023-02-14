@@ -1,3 +1,7 @@
+// module.exports = {
+//   publicPath: "/native-select-vue/",
+// };
+
 module.exports = {
-  publicPath: `/`,
+  baseUrl: process.env.NODE_ENV === "production" ? "/native-select-vue/" : "/",
 };
