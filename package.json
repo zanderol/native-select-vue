@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "eslint \"**/*.{js,jsx}\"",
+    "lint": "vue-cli-service lint",
+    "lint:js": "eslint src/**/*.{js,jsx}",
     "github": "gh-pages -d dist"
   },
   "dependencies": {
