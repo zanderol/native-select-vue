@@ -8,6 +8,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lint:js": "eslint src/**/*.{js,jsx}",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "github": "gh-pages -d dist"
   },
   "dependencies": {
