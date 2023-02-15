@@ -3,6 +3,7 @@
     <h1>Hello, Vue!</h1>
     <v-select :options="options" @select="optionSelect" />
     <p>Selected option goes here: {{ selected }}</p>
+    <p>gh-pages fixed</p>
   </div>
 </template>
 
