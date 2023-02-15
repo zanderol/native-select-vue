@@ -1,6 +1,8 @@
 <template>
   <div class="v-select">
-    <p class="title" @click="areOptionsVisible = !areOptionsVisible">Select</p>
+    <p class="title" @click="areOptionsVisible = !areOptionsVisible">
+      {{ selected }}
+    </p>
     <div class="options" v-if="areOptionsVisible">
       <p
         v-for="option in options"
@@ -23,6 +25,10 @@ export default {
         return [];
       },
     },
+    selected: {
+      type: String,
+      defaul: "",
+    },
   },
   data() {
     return {
@@ -33,7 +39,17 @@ export default {
   methods: {
     selectOption(option) {
       this.$emit("select", option);
+      this.areOptionsVisible = false;
     },
+    hideSelect() {
+      this.areOptionsVisible = false;
+    },
+  },
+  mounted() {
+    document.addEventListener("click", this.hideSelect.bind(this), true);
+  },
+  beforeDestroy() {
+    document.removeEventListener("click", this.hideSelect);
   },
 };
 </script>
@@ -41,6 +57,8 @@ export default {
 <style>
 .v-select {
   position: relative;
+  top: 40px;
+  left: 20px;
   width: 200px;
   cursor: pointer;
   user-select: none;

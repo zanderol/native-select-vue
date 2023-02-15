@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <h1>Hello, Vue!</h1>
-    <v-select :options="options" @select="optionSelect" />
+    <v-select :options="options" @select="optionSelect" :selected="selected" />
     <p>Selected option goes here: {{ selected }}</p>
-    <p>gh-pages fixed</p>
   </div>
 </template>
 
@@ -23,7 +22,7 @@ export default {
         { name: "Option 4", value: 4 },
         { name: "Option 5", value: 5 },
       ],
-      selected: "",
+      selected: "Select",
     };
   },
   methods: {
