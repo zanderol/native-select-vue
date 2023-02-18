@@ -1,5 +1,5 @@
 <template>
-  <div class="v-select">
+  <div class="v-select" ref="select">
     <p class="title" @click="areOptionsVisible = !areOptionsVisible">
       {{ selected }}
     </p>
@@ -27,7 +27,7 @@ export default {
     },
     selected: {
       type: String,
-      defaul: "",
+      default: "",
     },
   },
   data() {
@@ -41,13 +41,16 @@ export default {
       this.$emit("select", option);
       this.areOptionsVisible = false;
     },
-    hideSelect() {
-      this.areOptionsVisible = false;
+    hideSelect(e) {
+      if (!this.$refs.select.contains(e.target)) {
+        this.areOptionsVisible = false;
+      }
     },
   },
   mounted() {
-    document.addEventListener("click", this.hideSelect.bind(this), true);
+    document.addEventListener("click", this.hideSelect, true);
   },
+
   beforeDestroy() {
     document.removeEventListener("click", this.hideSelect);
   },
